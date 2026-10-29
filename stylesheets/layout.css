@@ -75,7 +75,7 @@ ul {
   width: auto;
   max-width: 100%;
   height: auto;
-  max-height: min(62vh, 600px);
+  max-height: min(72vh, 700px);
   margin: 0 auto;
 }
 
