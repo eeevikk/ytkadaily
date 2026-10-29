@@ -63,7 +63,19 @@ ul {
 }
 
 /* ---------- HERO ---------- */
+/* Шапка и hero занимают ровно один экран, плашка «О НАС» начинается ниже. */
+.first-screen {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100svh;
+  min-height: 420px;
+}
+
 .hero {
+  position: relative;
+  flex: 1 1 0;
+  min-height: 0;
   background: var(--yellow);
   border: var(--border) solid var(--black);
   border-top: 0;
@@ -71,12 +83,13 @@ ul {
 }
 
 .hero__img {
-  display: block;
+  position: absolute;
+  inset: 0;
   width: auto;
-  max-width: 100%;
   height: auto;
-  max-height: min(72vh, 700px);
-  margin: 0 auto;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
 }
 
 .visually-hidden {
@@ -399,6 +412,22 @@ ul {
 
 /* ---------- МОБИЛЬНАЯ ВЕРСИЯ ---------- */
 @media (max-width: 700px) {
+  .first-screen {
+    height: auto;
+    min-height: 0;
+  }
+
+  .hero {
+    flex: none;
+  }
+
+  .hero__img {
+    position: static;
+    display: block;
+    width: 100%;
+    max-height: none;
+  }
+
   .nav {
     gap: 4px;
     padding: 20px 8px;
