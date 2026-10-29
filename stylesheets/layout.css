@@ -64,15 +64,19 @@ ul {
 
 /* ---------- HERO ---------- */
 .hero {
-  background: var(--black);
+  background: var(--yellow);
+  border: var(--border) solid var(--black);
+  border-top: 0;
   line-height: 0;
 }
 
 .hero__img {
-  width: 100%;
+  display: block;
+  width: auto;
+  max-width: 100%;
   height: auto;
-  max-height: 88vh;
-  object-fit: contain;
+  max-height: min(62vh, 600px);
+  margin: 0 auto;
 }
 
 .visually-hidden {
@@ -150,7 +154,7 @@ ul {
 
 .star--neon {
   z-index: 2;
-  left: 0;
+  left: -4%;
   top: 0;
   width: 60%;
   aspect-ratio: 300 / 206;
@@ -259,15 +263,17 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  width: min(760px, 100%);
+  justify-content: center;
+  gap: 6px;
+  width: min(820px, 100%);
   margin: 0 auto 56px;
-  padding: 28px 24px;
+  padding: 64px 8%;
   background: var(--red);
   border: 6px solid var(--black);
   border-radius: 50%;
   color: var(--white);
-  font-size: clamp(22px, 3vw, 44px);
+  font-size: clamp(18px, 2.8vw, 36px);
+  line-height: 1.15;
   text-align: center;
 }
 
@@ -413,6 +419,7 @@ ul {
   }
 
   .star--neon {
+    left: 0;
     width: 100%;
   }
 
@@ -447,6 +454,10 @@ ul {
 
   .services__barcode {
     width: 100%;
+  }
+
+  .news__title {
+    padding: 44px 8%;
   }
 
   .news-item__inner {
