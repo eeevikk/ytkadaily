@@ -64,13 +64,15 @@ ul {
 
 /* ---------- HERO ---------- */
 .hero {
-  background: var(--yellow);
+  background: var(--black);
   line-height: 0;
 }
 
 .hero__img {
   width: 100%;
   height: auto;
+  max-height: 88vh;
+  object-fit: contain;
 }
 
 .visually-hidden {
@@ -121,19 +123,27 @@ ul {
    Размеры и отступы в %, поэтому блок масштабируется целиком. */
 .about__stars {
   position: relative;
-  aspect-ratio: 1 / 0.58;
+  container-type: inline-size;
+  aspect-ratio: 1 / 0.62;
   margin-top: 16px;
 }
 
 .star {
   position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
   color: var(--white);
-  font-size: clamp(11px, 1.6vw, 21px);
+}
+
+/* Текст стоит в самом большом прямоугольнике внутри звезды,
+   поэтому не заезжает на её шипы и обводку. */
+.star p {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(10px, 1.9vw, 22px);
+  font-size: clamp(10px, 1.9cqw, 22px);
   line-height: 1.3;
   text-align: center;
 }
@@ -142,19 +152,31 @@ ul {
   z-index: 2;
   left: 0;
   top: 0;
-  width: 56%;
+  width: 60%;
   aspect-ratio: 300 / 206;
-  padding: 6% 12.5% 12%;
   background-image: url("../images/star-neon.svg");
 }
 
+.star--neon p {
+  left: 27.4%;
+  top: 34.2%;
+  width: 48.3%;
+  height: 36.9%;
+}
+
 .star--dark {
-  right: -3%;
-  top: 14%;
-  width: 64%;
+  right: -4%;
+  top: 16%;
+  width: 66%;
   aspect-ratio: 388 / 236;
-  padding: 7.8% 13%;
   background-image: url("../images/star-dark.svg");
+}
+
+.star--dark p {
+  left: 24.2%;
+  top: 34.5%;
+  width: 49.5%;
+  height: 38.6%;
 }
 
 .about__camera {
@@ -171,7 +193,7 @@ ul {
   position: relative;
   display: grid;
   gap: 28px;
-  padding: 48px 5% 64px;
+  padding: 48px max(5%, calc((100% - 1100px) / 2)) 64px;
   background: var(--red);
 }
 
@@ -222,7 +244,7 @@ ul {
 
 .services__duck {
   position: absolute;
-  right: 5%;
+  right: max(5%, calc((100% - 1100px) / 2));
   bottom: 40px;
   width: min(17%, 220px);
 }
@@ -292,7 +314,7 @@ ul {
   flex-wrap: wrap;
   justify-content: space-around;
   gap: 12px;
-  padding: 16px 5%;
+  padding: 16px max(5%, calc((100% - 1100px) / 2));
   background: var(--gold);
   color: var(--red);
   font-family: "Anton", Impact, sans-serif;
@@ -301,35 +323,39 @@ ul {
 
 /* ---------- ПОДПИСКА ---------- */
 .subscribe {
-  padding: 80px 5% 64px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 40px 48px;
+  padding: 64px max(5%, calc((100% - 960px) / 2));
   background: var(--red);
 }
 
 .subscribe__title {
-  width: fit-content;
+  grid-column: 1 / -1;
+  justify-self: center;
   max-width: 100%;
-  margin: 0 auto 48px;
-  padding: 2px 8px;
+  padding: 6px 16px;
   background: var(--black);
   color: var(--yellow);
-  font-size: clamp(16px, 2.4vw, 36px);
+  font-size: clamp(15px, 1.9vw, 28px);
+  line-height: 1.3;
   text-align: center;
 }
 
 .subscribe__form {
   display: grid;
-  gap: 40px;
-  max-width: 700px;
-  margin-left: 4%;
+  gap: 28px;
+  max-width: 560px;
 }
 
 .btn {
   justify-self: start;
-  padding: 24px 56px;
+  padding: 16px 40px;
   background: var(--yellow);
-  border: 6px solid var(--black);
+  border: 5px solid var(--black);
   font-family: inherit;
-  font-size: clamp(16px, 2vw, 30px);
+  font-size: clamp(16px, 1.9vw, 24px);
   cursor: pointer;
 }
 
@@ -339,8 +365,8 @@ ul {
 
 .field {
   display: grid;
-  gap: 4px;
-  font-size: clamp(16px, 2vw, 30px);
+  gap: 2px;
+  font-size: clamp(16px, 1.9vw, 24px);
 }
 
 .field input {
@@ -348,7 +374,7 @@ ul {
   padding: 8px 0;
   background: transparent;
   border: 0;
-  border-bottom: 4px solid var(--black);
+  border-bottom: 3px solid var(--black);
   font: inherit;
   outline: none;
 }
@@ -358,12 +384,12 @@ ul {
 }
 
 .subscribe__contacts {
-  width: fit-content;
-  margin: 48px 0 0 auto;
-  padding: 12px 24px;
+  margin: 0;
+  padding: 10px 20px;
   background: var(--yellow);
-  border: 8px solid var(--black);
-  font-size: clamp(14px, 1.8vw, 28px);
+  border: 6px solid var(--black);
+  font-size: clamp(13px, 1.4vw, 20px);
+  white-space: nowrap;
 }
 
 /* ---------- МОБИЛЬНАЯ ВЕРСИЯ ---------- */
@@ -379,27 +405,34 @@ ul {
   }
 
   .about__stars {
-    aspect-ratio: 1 / 1.35;
+    aspect-ratio: 1 / 1.38;
   }
 
-  .star {
-    font-size: clamp(10px, 3.1vw, 15px);
+  .star p {
+    font-size: 13px;
   }
 
   .star--neon {
-    width: 80%;
-    padding: 10% 20% 13%;
+    width: 100%;
   }
 
   .star--dark {
-    right: -4%;
-    top: 41%;
-    width: 94%;
-    padding: 12.5% 19%;
+    right: -3%;
+    top: 40.6%;
+    width: 100%;
   }
 
   .about__camera {
-    width: 38%;
+    width: 36%;
+  }
+
+  .subscribe {
+    grid-template-columns: 1fr;
+    padding: 48px 5%;
+  }
+
+  .subscribe__contacts {
+    justify-self: end;
   }
 
   .card--right {
